@@ -1,0 +1,14 @@
+language: generic 
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t abubaker/docker-react -f dockerfile.dev . 
+  # abubaker/react-docker used bcz it uses to build image
+
+ script:
+  - docker run -e CI=true abubaker/docker-react npm run test
+  # abubaker/react-docker used to run docker
+
