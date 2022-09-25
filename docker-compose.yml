@@ -3,19 +3,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - '3000:3000'
-    volumes:
-      - /app/node_modules
-      - .:/app
-  tests:
-    build:
-      context: .
-      dockerfile: dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: ["npm","run","test"]  
-    # command: overrides command of build that is npm run start
-    
+      - '80:80'
