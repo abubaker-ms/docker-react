@@ -12,4 +12,3 @@ before_install:
   - docker run -e CI=true abubaker/docker-react npm run test
   # abubaker/react-docker used to run docker
 
-#
