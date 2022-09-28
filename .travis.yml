@@ -6,7 +6,9 @@ services:
 
 before_install:
   - docker build -t abubaker/docker-react -f dockerfile.dev .
+  # -t abubaker/docker-react will add image id and run the docker file   use can also use -t myimage(anything...abubaker/docker-react not compulsary its just a name)
 
+#tell travis how to run test scripts
 script:
   - docker run -e CI=true abubaker/docker-react npm run test
 

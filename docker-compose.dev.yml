@@ -1,14 +1,22 @@
+#we use docker compose to make docker run easily
+#without docker compose to map local folder to root directory if any changes we use below command(using volumes)
+#docker run -p 3000:3000 -v /app/node_modules -v $(pws):/app <image-id>
 version: '3'
 services:
   web:
+  #same as build -f dockerfile.dev .
     build:
       context: .
       dockerfile: dockerfile.dev
+      #mapping ports
     ports:
       - '3000:3000'
     volumes:
+        # below line indicates dont map files inside app - nodemodules
       - /app/node_modules
+      # below line indicates (.)current folder outside container should map all files inside the container /app folder
       - .:/app
+      #test services
   tests:
     build:
       context: .
@@ -18,4 +26,7 @@ services:
       - .:/app
     command: ["npm","run","test"]  
     # command: overrides command of build that is npm run start
+
+    #----------finally to run this use command below-------
+    #  docker-compose up
     

@@ -1,9 +1,14 @@
+# This is for Dev setup , running locally
+# In command prompt to run this react app :1.  docker file -f dockerfile.dev
+#                                          2.  docker run -p 3000:3000 <image-id created from above>
 FROM node:16-alpine
 
 USER node 
 RUN mkdir -p /home/node/app
-WORKDIR /home/node/app
+#working directory
+WORKDIR /home/node/app       
 
+#copy to root directory ./
 COPY --chown=node ./package.json ./
 RUN npm install
 COPY --chown=node:node ./ ./
